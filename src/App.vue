@@ -4,7 +4,10 @@
 
 <!--    <div v-if="!email">-->
     <div v-if="email == ''">
-      <login-form @login="logMeIn($event)"></login-form>
+      <login-form @login="enter($event)" button-label="Wejdź"></login-form>
+      <login-form @login="enter($event)" button-label="Wleć"></login-form>
+      <login-form @login="enter($event)" :button-label="Math.random() < 0.5 ? 'Etykieta A' : 'Etykieta B'"></login-form>
+      <login-form @login="logMeIn($event)" button-label="Zaloguj sie"></login-form>
     </div>
     <div v-else>
       <h2>Witaj {{email}}</h2>
