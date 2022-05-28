@@ -6,7 +6,9 @@
     <div v-else-if="email.length < 15">Twój adres e-mail jest w sam raz.</div>
     <div v-else class="wrongEmail">Twój adres e-mail jest stanowczo za długi.</div>
     <input type = "text" v-model = "email" > {{email.length}}
-
+    <br>
+    <br>
+    <button @click = "alertMyEmail()">SHOW</button>
 
 
   </div>
@@ -18,8 +20,12 @@ export default {
     return {
       email: '',
     }
+  },
+  methods: {
+    alertMyEmail() {
+      alert(this.email)
+    }
   }
-
 }
 </script>
 
