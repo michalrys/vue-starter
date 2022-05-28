@@ -2,10 +2,9 @@
   <div>
     <h1>Witaj</h1>
 
-    <div v-if="!loggedIn">
-      <label>Zaloguj się: </label>
-      <input type = "text" @keyup.enter="logMeIn()" v-model = "email" >
-      <button @click = "logMeIn()">Zaloguj się</button>
+<!--    <div v-if="!email">-->
+    <div v-if="email == ''">
+      <login-form @login="logMeIn($event)"></login-form>
     </div>
     <div v-else>
       <h2>Witaj {{email}}</h2>
@@ -18,20 +17,22 @@
 
 <script>
 import "milligram";
+import LoginForm from "./LoginForm";
 
 export default {
+  components: {LoginForm},
+
   data() {
     return {
-      email: '',
-      loggedIn: false,
+      email: ''
     }
   },
+
   methods: {
-    logMeIn() {
-      this.loggedIn = true;
+    logMeIn(username) {
+      this.email = username;
     },
     logMeOut() {
-      this.loggedIn = false;
       this.email = '';
     }
   }
